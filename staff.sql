@@ -1,0 +1,7 @@
+CREATE TABLE `staff` (
+    `id` INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    `name` VARCHAR(30),
+    `email` VARCHAR(100),
+    `mobile` VARCHAR(30),
+    `password` VARCHAR(50)
+)  ENGINE=INNODB , CHARSET=UTF8;
