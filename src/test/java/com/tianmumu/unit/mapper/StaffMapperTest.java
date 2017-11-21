@@ -18,7 +18,7 @@ import com.tianmumu.unit.vo.Staff;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:spring-ctx.xml"})
 @Transactional
-@Rollback(false)
+//@Rollback(false)
 public class StaffMapperTest {
     @Resource
     private StaffMapper staffMapper;

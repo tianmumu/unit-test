@@ -1,18 +1,19 @@
 package com.tianmumu.unit.service.impl;
 
-import com.tianmumu.unit.mapper.StaffMapper;
-import com.tianmumu.unit.service.StaffService;
-import com.tianmumu.unit.vo.Staff;
+import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import com.tianmumu.unit.mapper.StaffMapper;
+import com.tianmumu.unit.service.StaffService;
+import com.tianmumu.unit.vo.Staff;
 
 @Service
 public class StaffServiceImpl implements StaffService {
     @Resource
     private StaffMapper staffMapper;
+    
     @Value("email.suffix")
     private String emailSuffix;
 

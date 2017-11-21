@@ -1,8 +1,8 @@
 package com.tianmumu.unit.service;
 
-import com.tianmumu.unit.mapper.StaffMapper;
-import com.tianmumu.unit.service.impl.StaffServiceImpl;
-import com.tianmumu.unit.vo.Staff;
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.when;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -14,13 +14,18 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.util.ReflectionTestUtils;
 
-import static org.hamcrest.core.IsEqual.equalTo;
-import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.when;
+import com.tianmumu.unit.mapper.StaffMapper;
+import com.tianmumu.unit.service.impl.StaffServiceImpl;
+import com.tianmumu.unit.vo.Staff;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:spring-ctx.xml"})
 public class StaffServiceTest {
+	
+	/**
+	 * @Mock: 创建一个Mock.
+	 * @InjectMocks: 创建一个实例，其余用@Mock（或@Spy）注解创建的mock将被注入到用该实例中。
+	 */
     @InjectMocks
     private StaffServiceImpl staffService;//注意此处不能使用接口
     @Mock
@@ -59,7 +64,7 @@ public class StaffServiceTest {
     @Test
     public void testAddStaffSuc() {
         ReflectionTestUtils.setField(staffService, "emailSuffix", "@163.com");
-        Staff staff = new Staff(100L, "王小二", "haha.163.com", "1231", "1232");
+        Staff staff = new Staff(100L, "王小二", "haha@163.com", "1231", "1232");
         when(staffMapper.insert(staff)).thenReturn(1);
         Long id = staffService.addStaff(staff);
         assertThat(id, equalTo(100L));
